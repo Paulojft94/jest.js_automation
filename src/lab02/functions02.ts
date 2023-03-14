@@ -30,41 +30,17 @@ export function valorIntroduzido(inputNum: number): any {
   }
 }
 
-///////////
-
 //Exercício #3
 
 export function pontos(x1: number, y1: number, x2: number, y2: number): number {
   let distPontos: number;
   let calc: number;
 
-  calc = (x2 - x1) ^ (2 + (y2 - y1)) ^ 2;
+  calc = (x2 - x1) ** 2 + (y2 - y1) ** 2;
 
-  distPontos = calc ^ 0.5;
+  distPontos = calc ** 0.5;
 
-  return distPontos;
-}
-
-///////////
-
-//Exercício #4
-
-export function verNumber(num: number): any {
-  let valor: any;
-  let digito1: number;
-  let digito2: number;
-  let digito3: number;
-
-  if (num % 100 === num || num % 1000 === num) {
-    digito3 = num % 10;
-    digito2 = (num / 10) % 10;
-    digito1 = (num / 100) % 10;
-    valor = Math.floor(digito1);
-  } else {
-    valor = "Number não tem 3 dígitos";
-  }
-
-  return valor;
+  return parseFloat(distPontos.toFixed(2));
 }
 
 ///////////
@@ -73,8 +49,11 @@ export function verNumber(num: number): any {
 
 export function evenCalc(num: number): string {
   let even: string = "Não É PAR";
-
-  if (num % 2 == 0) even = "É Par";
+  if (num == 0) {
+    even = "Input Inválido";
+  } else if (num % 2 == 0) {
+    even = "É Par";
+  }
   return even;
 } ///////////
 
