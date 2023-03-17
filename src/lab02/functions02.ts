@@ -83,7 +83,7 @@ export function volumeCubo(numArea: number): number {
     aresta = (numArea / 6) ** 0.5;
     vol = aresta ** 3;
   } else vol = -1;
-  return vol;
+  return parseFloat(vol.toFixed(2));
 }
 
 export function cubeClassification(cubeClass: number): string {
@@ -93,7 +93,7 @@ export function cubeClassification(cubeClass: number): string {
     classification = "Pequeno";
   } else if (cubeClass > 1 && cubeClass < 2) {
     classification = "Médio";
-  } else if (cubeClass > 2) {
+  } else if (cubeClass >= 2) {
     classification = "Grande";
   }
   return classification;
@@ -118,7 +118,7 @@ export function calcHoras(numSec: number): string {
 export function saudacao(numSec: number): string {
   const horaS = 3600;
 
-  let sauda: string = "a";
+  let sauda: string = "";
 
   let LimitDia1: number = 6 * horaS;
   let limitDia2: number = 12 * horaS;
@@ -128,9 +128,9 @@ export function saudacao(numSec: number): string {
   let eixoNoi: number = 24 * horaS - 1;
   let limitNoi2: number = 5 * horaS + (horaS - 1);
 
-  if (numSec >= LimitDia1 && numSec < limitDia2) sauda = "Bom dia";
+  if (numSec >= LimitDia1 && numSec <= limitDia2) sauda = "Bom dia";
 
-  if (numSec >= limitTar1 && numSec < limitTar2) sauda = "Boa tarde";
+  if (numSec >= limitTar1 && numSec <= limitTar2) sauda = "Boa tarde";
 
   if ((numSec >= limitNoi1 && numSec <= eixoNoi) || (numSec >= 0 && numSec <= limitNoi2)) sauda = "Boa Noite";
 
@@ -244,18 +244,23 @@ export function precoCalc(erva: number, arvs: number, arbustos: number, maoObra:
   let precoArbustos: number = arbustos * 15;
   let manPowerPrice: number = (maoObra / 3600) * 10;
   let precoTotal: number;
+  let resultado: number = 0;
 
   precoTotal = precoGrama + precoArvs + precoArbustos + manPowerPrice;
 
-  return precoTotal;
+  resultado = parseFloat(precoTotal.toFixed(2));
+
+  return resultado;
 }
 
 //Exercício #16
 
 export function mediaKM(num1: number, num2: number, num3: number, num4: number, num5: number): number {
   let medDiariaKM: number = ((num1 + num2 + num3 + num4 + num5) / 5) * 1.609;
+  let arredondado: string = medDiariaKM.toFixed(2);
+  const result = parseFloat(arredondado);
 
-  return medDiariaKM;
+  return result;
 }
 
 //Exercício #17
@@ -287,7 +292,7 @@ export function custoTotal(edificioArea: number, numPintores: number, salarioHor
 export function custoMateriais(area: number, tinta: number, rendimentoTinta: number): number {
   let precoTotalMaterial: number;
 
-  precoTotalMaterial = Math.ceil(area / rendimentoTinta) * tinta;
+  precoTotalMaterial = parseFloat((Math.ceil(area / rendimentoTinta) * tinta).toFixed(2));
 
   return precoTotalMaterial;
 }
@@ -317,6 +322,11 @@ export function horaChegada(partida: string, duracao: string): string {
       informacao = `O Comboio chega amanhã às ${somaH}:${somaMin}`;
     }
   } else informacao = `O Comboio chega hoje às ${somaH}:${somaMin}`;
+
+  if (somaH > 23) {
+    somaH = somaH % 24;
+    informacao = `O Comboio chega amanhã às ${somaH}:${somaMin}`;
+  }
 
   return informacao;
 }
