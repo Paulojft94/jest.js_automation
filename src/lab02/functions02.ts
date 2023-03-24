@@ -22,12 +22,13 @@ export function calculateGirlsPercentage(boys: number, girls: number): number {
 
 //Exercício #2
 
-export function valorIntroduzido(inputNum: number): any {
-  let valorNota: string;
+export function valorIntroduzido(inputNum: number): string {
+  let valorNota: string = "";
 
   if (inputNum >= 8) {
-    return (valorNota = "VERDADEIRO");
+    valorNota = "VERDADEIRO";
   }
+  return valorNota;
 }
 
 //Exercício #3
@@ -59,16 +60,12 @@ export function evenCalc(num: number): string {
 
 //Exercício #6
 export function funcao(num: number): number {
-  let output: number = 0;
-  if (num < 0) {
+  let output: number;
+
+  if (num <= 0) {
     output = num;
-  }
-  if (num == 0) {
-    output = 0;
-  }
-  if (num > 0) {
-    output = num ** 2 - 2 * num;
-  }
+  } else output = num ** 2 - 2 * num;
+
   return output;
 }
 ///////////
@@ -87,7 +84,7 @@ export function volumeCubo(numArea: number): number {
 }
 
 export function cubeClassification(cubeClass: number): string {
-  let classification: string = "aa";
+  let classification: string = "";
 
   if (cubeClass <= 1) {
     classification = "Pequeno";
@@ -140,7 +137,7 @@ export function saudacao(numSec: number): string {
 //Exercício #10
 
 export function multiDiv(x: number, y: number): string {
-  let resultado: string = "s";
+  let resultado: string = "";
 
   if (x % y == 0) resultado = "X é Múltiplo de Y";
   else if (y % x == 0) resultado = "Y é Múltiplo de x";
@@ -151,7 +148,7 @@ export function multiDiv(x: number, y: number): string {
 
 //Exercício #11
 export function numSegregation(num: number): number[] {
-  let numDigit: number[] = [0, 0, 0];
+  let numDigit: number[] = [];
 
   numDigit[0] = Math.floor(num / 100);
   numDigit[1] = Math.floor((num % 100) / 10);
@@ -161,10 +158,9 @@ export function numSegregation(num: number): number[] {
 }
 
 export function numListClassification(list: number[]): string {
-  let classificacao: string = "a";
+  let classificacao: string = "A sequência não é crescente";
 
   if (list[0] < list[1] && list[1] < list[2]) classificacao = "A sequência é crescente";
-  else classificacao = "A sequência não é crescente";
 
   return classificacao;
 }
@@ -188,7 +184,7 @@ export function discountedPreco(price: number): number {
 //Exercício #13
 
 export function turmaClassificacao(num: number): string {
-  let resultado: string = "s2";
+  let resultado: string = "";
 
   if (num < 0 || num > 1) {
     resultado = "Valor Inválido";
@@ -210,7 +206,7 @@ export function turmaClassificacao(num: number): string {
 //Exercício #14
 
 export function empresaGrupo(num: number): string {
-  let anuncio: string = "a";
+  let anuncio: string = "Valor inválido";
 
   if (num >= 0 && num <= 0.3) {
     anuncio = "Índice de poluícão aceitável";
@@ -347,7 +343,7 @@ export function somar(h: string, dur: number): string {
   minutos = Math.floor((somaSecs % 3600) / 60) % 60;
   segundos = Math.floor(somaSecs % 60);
 
-  horaFinal = "O processamento desta tarefa termina às " + horas + ":" + minutos + ":" + segundos;
+  horaFinal = `O processamento desta tarefa termina às ${horas}:${minutos}:${segundos}`;
 
   return horaFinal;
 }

@@ -6,6 +6,11 @@ describe("Validate the suspended comapnies", () => {
     expect(empresaGrupo(index)).toBe("Índice de poluícão aceitável");
   });
 
+  test("0.29 should return Indíce de poluícao aceitavel", () => {
+    const index: number = 0.29;
+    expect(empresaGrupo(index)).toBe("Índice de poluícão aceitável");
+  });
+
   test("0.3 should return Indíce de poluícao aceitavel", () => {
     const index: number = 0.3;
     expect(empresaGrupo(index)).toBe("Índice de poluícão aceitável");
@@ -34,5 +39,10 @@ describe("Validate the suspended comapnies", () => {
   test("0.51 should return Indíce de poluícao aceitavel", () => {
     const index: number = 0.51;
     expect(empresaGrupo(index)).toBe("Todos os grupos estão suspensos");
+  });
+
+  test("-0.1 should return valor inválido", () => {
+    const index: number = -0.1;
+    expect(empresaGrupo(index)).toBe("Valor inválido");
   });
 });

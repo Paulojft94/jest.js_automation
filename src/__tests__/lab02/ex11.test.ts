@@ -25,4 +25,10 @@ describe("Validar as sequencias de números", () => {
 
     expect(numListClassification(numDigit)).toBe("A sequência não é crescente");
   });
+
+  test("122 should return A sequência não é crescente", () => {
+    let numDigit: number[] = [1, 2, 2];
+
+    expect(numListClassification(numDigit)).toBe("A sequência não é crescente");
+  });
 });
