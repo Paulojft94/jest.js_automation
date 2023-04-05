@@ -1,4 +1,3 @@
-import { error } from "console";
 import { calculateBoysPercentage, calculateGirlsPercentage } from "../../lab02/functions02";
 
 describe("Boys percentage", () => {
