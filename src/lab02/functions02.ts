@@ -84,13 +84,13 @@ export function volumeCubo(numArea: number): number {
 }
 
 export function cubeClassification(cubeClass: number): string {
-  let classification: string = "";
+  let classification: string;
 
   if (cubeClass <= 1) {
     classification = "Pequeno";
-  } else if (cubeClass > 1 && cubeClass < 2) {
+  } else if (cubeClass < 2) {
     classification = "Médio";
-  } else if (cubeClass >= 2) {
+  } else {
     classification = "Grande";
   }
   return classification;
@@ -115,7 +115,7 @@ export function calcHoras(numSec: number): string {
 export function saudacao(numSec: number): string {
   const horaS = 3600;
 
-  let sauda: string = "";
+  let sauda: string;
 
   let LimitDia1: number = 6 * horaS;
   let limitDia2: number = 12 * horaS;
@@ -125,19 +125,20 @@ export function saudacao(numSec: number): string {
   let eixoNoi: number = 24 * horaS - 1;
   let limitNoi2: number = 5 * horaS + (horaS - 1);
 
-  if (numSec >= LimitDia1 && numSec <= limitDia2) sauda = "Bom dia";
-
-  if (numSec >= limitTar1 && numSec <= limitTar2) sauda = "Boa tarde";
-
-  if ((numSec >= limitNoi1 && numSec <= eixoNoi) || (numSec >= 0 && numSec <= limitNoi2)) sauda = "Boa Noite";
-
+  if (numSec >= LimitDia1 && numSec <= limitDia2) {
+    sauda = "Bom dia";
+  } else if (numSec >= limitTar1 && numSec <= limitTar2) {
+    sauda = "Boa tarde";
+  } else {
+    sauda = "Boa Noite";
+  }
   return sauda;
 }
 
 //Exercício #10
 
 export function multiDiv(x: number, y: number): string {
-  let resultado: string = "";
+  let resultado: string;
 
   if (x % y == 0) resultado = "X é Múltiplo de Y";
   else if (y % x == 0) resultado = "Y é Múltiplo de x";
@@ -148,11 +149,7 @@ export function multiDiv(x: number, y: number): string {
 
 //Exercício #11
 export function numSegregation(num: number): number[] {
-  let numDigit: number[] = [];
-
-  numDigit[0] = Math.floor(num / 100);
-  numDigit[1] = Math.floor((num % 100) / 10);
-  numDigit[2] = num % 10;
+  let numDigit: number[] = [Math.floor(num / 100), Math.floor((num % 100) / 10), num % 10];
 
   return numDigit;
 }
@@ -172,9 +169,9 @@ export function discountedPreco(price: number): number {
 
   if (price > 200) {
     rebatido = price * 0.4;
-  } else if (price > 100 && price <= 200) {
+  } else if (price > 100) {
     rebatido = price * 0.6;
-  } else if (price > 50 && price <= 100) {
+  } else if (price > 50) {
     rebatido = price * 0.7;
   } else rebatido = price * 0.8;
 
@@ -196,7 +193,7 @@ export function turmaClassificacao(num: number): string {
     resultado = "Turma Razoável";
   } else if (num < 0.9) {
     resultado = "Turma Boa";
-  } else if (num <= 1) {
+  } else {
     resultado = "Turma Excelente";
   }
 
@@ -206,7 +203,7 @@ export function turmaClassificacao(num: number): string {
 //Exercício #14
 
 export function empresaGrupo(num: number): string {
-  let anuncio: string = "Valor inválido";
+  let anuncio: string;
 
   if (num >= 0 && num <= 0.3) {
     anuncio = "Índice de poluícão aceitável";
@@ -216,6 +213,8 @@ export function empresaGrupo(num: number): string {
     anuncio = "Os grupos 1 e 2 estão suspensos";
   } else if (num > 0.3) {
     anuncio = "O grupo 1 está suspenso";
+  } else {
+    anuncio = "Valor inválido";
   }
 
   return anuncio;
